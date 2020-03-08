@@ -183,8 +183,30 @@ func main() {
 
 		fmt.Println(p)
 		fmt.Println(s)
+	case 22:
+		p := new(int)
+		*p = 1
+		fmt.Println(p)
+		fmt.Println(*p)
+	case 23:
+		type rect struct{ w, h float64 }
+
+		r := new(rect)
+		r.w, r.h = 3, 4
+		fmt.Println(r)
+		fmt.Println(*r)
+	case 24:
+		numbers := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+		multifly(numbers, 5)
+		fmt.Println(numbers)
 	}
 	println("완료")
+}
+
+func multifly(numbers []int, factor int) {
+	for i := range numbers {
+		numbers[i] *= factor
+	}
 }
 
 func insert2(s, new []int, index int) []int {

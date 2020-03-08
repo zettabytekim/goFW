@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math"
-	"sort"
 	"unicode/utf8"
 )
 
@@ -108,7 +107,6 @@ func main() {
 		s = insert(s, []int{6, 7}, len(s))
 		fmt.Println(s)
 	case 14:
-<<<<<<< HEAD
 		numberMap := map[string]int{}
 		numberMap["one"] = 1
 		numberMap["two"] = 2
@@ -150,22 +148,41 @@ func main() {
 
 		delete(numberMap, 3)
 		fmt.Println(numberMap)
-=======
-		s := []int{1, 2, 3, 4, 5}
+	case 19:
+		var p *int
 
-		s = insert2(s, []int{-3, -2}, 0)
-		fmt.Println(s)
+		i := 1
+		p = &i
+		fmt.Println(i)
+		fmt.Println(&i)
+		fmt.Println(*p)
+		fmt.Println(p)
+	case 20:
+		var p *int
+		var pp **int
 
-		s = insert2(s, []int{0}, 2)
-		fmt.Println(s)
+		i := 1
+		p = &i
+		pp = &p
+		fmt.Println(i, *p, **pp)
 
-		s = insert2(s, []int{6, 7}, len(s))
+		i++
+		fmt.Println(i, *p, **pp)
+
+		*p++
+		fmt.Println(i, *p, **pp)
+
+		**pp++
+		fmt.Println(i, *p, **pp)
+	case 21:
+		type rect struct{ w, h float64 }
+
+		var i int = 1
+		var p *int = &i
+		var s *rect = &rect{1, 2}
+
+		fmt.Println(p)
 		fmt.Println(s)
-	case 15:
-		s := []int{5, 2, 6, 3, 1, 4}
-		sort.Ints(s)
-		fmt.Println(s)
->>>>>>> b25909e165f9291075af44d1c2f56cfeb87fb737
 	}
 	println("완료")
 }

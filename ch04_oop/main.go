@@ -51,6 +51,19 @@ func (r rect) area() float64 {
 	return r.width * r.Height
 }
 
+type shaper interface {
+	area() float64
+}
+
+func describe2(s shaper) {
+	fmt.Println("area :", s.area())
+}
+
+func (q quantity) greaterThan(i int) bool { return int(q) > i }
+
+func (q *quantity) increment() { *q++ }
+func (q *quantity) decrement() { *q-- }
+
 func main() {
 	var in int
 	fmt.Print("선택 하세요: ")
@@ -87,5 +100,14 @@ func main() {
 	case 5:
 		r := rect{3, 4}
 		fmt.Println("area :", r.area())
+	case 6:
+		r := rect{3, 4}
+		describe2(r)
+	case 7:
+		q := quantity(3)
+		q.increment()
+		fmt.Printf("Is q(%d) gtrater than %d? %t \n", q, 3, q.greaterThan(3))
+		q.decrement()
+		fmt.Printf("Is q(%d) gtrater than %d? %t \n", q, 3, q.greaterThan(3))
 	}
 }
